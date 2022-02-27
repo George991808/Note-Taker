@@ -12,6 +12,8 @@ app.use(express.urlencoded({extended: true}));
 app.use(webRoutes);
 app.use(appRoutes);
 
+
+
 app.listen(PORT,() => {
     console.log('app is running on ${PORT} ')
 })
