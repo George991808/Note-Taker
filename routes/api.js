@@ -9,8 +9,8 @@ function getNotes() {
   return JSON.parse(fs.readFileSync(dbPath, "utf-8") || "[]");
 }
 
-function saveNotes(note){
-    fs.writeFileSync(dbPath, JSON.stringify(note), "utf-8");
+function saveNotes(note) {
+  fs.writeFileSync(dbPath, JSON.stringify(note), "utf-8");
 }
 router.get("/api/notes", (req, res) => {
   const notes = getNotes();
@@ -32,19 +32,17 @@ router.post("/api/notes", (req, res) => {
   const existingNotes = getNotes();
 
   existingNotes.push(newNote);
-  saveNotes(existingNotes)
- 
+  saveNotes(existingNotes);
 
   res.json(newNote);
 });
 
-router.delete('/api/notes/:id', (req, res)=>{
-const notes = getNotes();
+router.delete("/api/notes/:id", (req, res) => {
+  const notes = getNotes();
 
-const filtered = notes.filter((notes) => notes.id !==req.params.id);
-saveNotes(filtered)
-res.json(filtered);
-
-})
+  const filtered = notes.filter((notes) => notes.id !== req.params.id);
+  saveNotes(filtered);
+  res.json(filtered);
+});
 
 module.exports = router;
