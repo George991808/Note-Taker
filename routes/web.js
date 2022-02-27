@@ -17,10 +17,6 @@ router.get('/notes',(req,res)=>{
 });
 
 
-router.get('*',(req,res)=>{
-    const htmlPath = path.join(__dirname, "..", "public", 'index.html');
-    res.sendFile(htmlPath);
 
-});
 
 module.exports=router;
